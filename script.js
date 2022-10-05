@@ -37,7 +37,24 @@ function playRound(player, computer) {
   }
 }
 
-const player = prompt('(Rock, Paper, Scissors): ');
-const computer = getComputerChoice()
+let score = 0;
 
-console.log(playRound(player, computer));
+for (let i = 0; i < 5; i++) {
+  const player = prompt('(Rock, Paper, Scissors): ');
+  const computer = getComputerChoice()
+
+  const result = playRound(player, computer);
+  console.log(result);
+  if (result.includes('Win')) {
+    score++
+  }
+  if (result.includes('Both')) {
+    i--;
+  }
+}
+
+if (score > 2) {
+  console.log('You\'re the winner', score);
+} else {
+  console.log('You\'re the loser', score);
+}
